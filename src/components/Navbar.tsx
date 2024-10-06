@@ -1,11 +1,18 @@
+"use client"
+
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from './ui/button'
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from './ui/navigation-menu'
 import { Switch } from "@/components/ui/switch"
-
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 const Navbar = () => {
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const toggleMobileMenu = () => {
+        setIsMobileMenuOpen(!isMobileMenuOpen);
+    }
+
   return (
     <header className='py-4 bg-white text-gray-900 transition-colors duration-300 shadow-md'>
         <nav className='max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8'>
@@ -17,7 +24,7 @@ const Navbar = () => {
             {/* desktop navigation */}
             <div>
             <NavigationMenu className='hidden lg:flex'>
-                <NavigationMenuList className='flex space-x-8'>
+                <NavigationMenuList className='flex space-x-7'>
                     <NavigationMenuItem>
                         <NavigationMenuLink href='/news' className='hover: text-gray-600'>
                         News
@@ -32,7 +39,7 @@ const Navbar = () => {
 
                         <NavigationMenuContent>
                             <NavigationMenuLink>
-                             <ul className='text-gray-600 shadow-md rounded-md py-4 px-5 space-x-2'>
+                             <ul className='text-gray-500 shadow-md rounded-md py-4 px-5 space-x-2'>
                                 <li>
                                     <NavigationMenuLink href='/services/web-development' className='hover: text-gray-600'>Web Development</NavigationMenuLink>
                                 </li>
@@ -74,9 +81,27 @@ const Navbar = () => {
                 </div>
                 <Button variant='default' className='px-6'>Login</Button>
             </div>
+
+            {/* hamburger menu for mobile */}
+            <div className='lg:hidden'>
+                <Button onClick={toggleMobileMenu}>
+                    {
+                        isMobileMenuOpen ? (<AiOutlineClose size={20}/>) : (<AiOutlineMenu size={20}/>) 
+                    }
+                </Button>
+            </div>
         </nav>
     </header>
   )
 }
 
 export default Navbar
+
+
+/*
+    you need to use "use client" when 
+    1. any type of button click events
+    2. useState or useEffect
+*/
+
+// last : https://youtu.be/RJ0lkR3wX80?t=3206
