@@ -23,7 +23,7 @@ const Navbar = () => {
         <nav className='max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8'>
             {/* logo */}
             <div>
-                <Link href="/" className='text-xl font-bold'>Daily Dose Of Internet</Link>
+                <Link href="/" className='text-xl font-bold'>Daily Dose Of Games</Link>
             </div>
 
             {/* desktop navigation */}
@@ -109,4 +109,4 @@ export default Navbar
     2. useState or useEffect
 */
 
-// last : https://youtu.be/RJ0lkR3wX80?t=4046
+// last : https://youtu.be/RJ0lkR3wX80?t=5225
