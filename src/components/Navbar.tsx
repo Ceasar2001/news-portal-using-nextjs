@@ -89,7 +89,9 @@ const Navbar = () => {
                     <span className='mr-2'>Dark Mode</span>
                     <Switch />
                 </div>
-                <Button variant='default' className='px-6'>Login</Button>
+                <Button variant='default' className='px-6'>
+                    login
+                </Button>
             </div>
 
             {/* hamburger menu for mobile */}
@@ -113,5 +115,3 @@ export default Navbar
     1. any type of button click events
     2. useState or useEffect
 */
-
-// last : https://youtu.be/RJ0lkR3wX80?t=6650
