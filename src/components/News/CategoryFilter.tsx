@@ -9,7 +9,7 @@ const CategoryFilter = ({onCategoryChange}: CategoryFilterProps) => {
     const categories = ["all", 'tech', 'health', 'sports', 'business']
 
   return (
-    <div className='flex gap-2 items-center justify-center'>
+    <div className='flex gap-1 items-center justify-center mx-4'>
         <h3 className='font-bold text-lg flex-shrink-0'>Filter by Category: </h3>
 
         <Select onValueChange={(value) => onCategoryChange(value === 'all' ? '' : value)}>
