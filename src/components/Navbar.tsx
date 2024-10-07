@@ -1,17 +1,20 @@
 "use client"
 
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Button } from './ui/button'
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from './ui/navigation-menu'
 import { Switch } from "@/components/ui/switch"
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { usePathname } from 'next/navigation'
+import { ThemeContext } from '@/context/themeContext'
 
 const Navbar = () => {
 
 
     const pathname = usePathname()
+
+    const {isDarkMode, toggleTheme}: any = useContext(ThemeContext)
 
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const toggleMobileMenu = () => {
@@ -19,7 +22,7 @@ const Navbar = () => {
     }
 
   return (
-    <header className='py-4 bg-blue-800 text-white transition-colors duration-300 shadow-md'>
+    <header className={`py-4 ${isDarkMode ? "bg-gray-900 text-white" : "bg-blue-800 text-white"} shadow-md transition-colors duration-300`}>
         <nav className='max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8'>
             {/* logo */}
             <div>
@@ -80,7 +83,9 @@ const Navbar = () => {
             </div>
             {/* color switcher and login buttons */}
             <div className='hidden lg:flex items-center space-x-4'>
-                <div className='flex items-center'>
+                <div 
+                    onClick={toggleTheme} 
+                    className='flex items-center'>
                     <span className='mr-2'>Dark Mode</span>
                     <Switch />
                 </div>
